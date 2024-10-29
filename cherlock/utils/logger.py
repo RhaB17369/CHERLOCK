@@ -1,7 +1,7 @@
 import logging
 from os import path
 from sys import stdout
-from raccoon_src.utils.singleton import Singleton
+from cherlock.utils.singleton import Singleton
 
 
 class SystemOutLogger(metaclass=Singleton):
@@ -16,7 +16,7 @@ class SystemOutLogger(metaclass=Singleton):
         self.logger = self.get_logger()
 
     def get_logger(self):
-        logger = logging.getLogger("Raccoon")
+        logger = logging.getLogger("cherlock")
         logger.setLevel(self.level)
 
         out_handler = logging.StreamHandler(stdout)

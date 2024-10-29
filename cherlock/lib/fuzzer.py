@@ -1,12 +1,13 @@
+
 import uuid
 from functools import partial
 from multiprocessing.pool import ThreadPool
 from requests.exceptions import ConnectionError
-from raccoon_src.utils.exceptions import FuzzerException, RequestHandlerException
-from raccoon_src.utils.coloring import COLOR, COLORED_COMBOS
-from raccoon_src.utils.request_handler import RequestHandler
-from raccoon_src.utils.help_utils import HelpUtilities
-from raccoon_src.utils.logger import Logger
+from cherlock.utils.exceptions import FuzzerException, RequestHandlerException
+from cherlock.utils.coloring import COLOR, COLORED_COMBOS
+from cherlock.utils.request_handler import RequestHandler
+from cherlock.utils.help_utils import HelpUtilities
+from cherlock.utils.logger import Logger
 
 
 # Really wanted to use Aiohttp, doesn't play nice with proxies or TOR, disconnects unexpectedly, etc.

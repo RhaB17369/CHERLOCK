@@ -5,7 +5,7 @@ with open("README.md", "r") as file:
     long_description = file.read()
 
 setup(
-    name='raccoon-scanner',
+    name='cherlock-scanner',
     packages=find_packages(exclude="tests"),
     license="MIT",
     version='0.8.5',
@@ -14,7 +14,7 @@ setup(
     long_description_content_type="text/markdown",
     author='Evyatar Meged',
     author_email='evyatarmeged@gmail.com',
-    url='https://github.com/evyatarmeged/Raccoon',
+    url='https://github.com/RhaB17369/CHERLOCK',
     install_requires=['beautifulsoup4',
                       'requests',
                       'dnspython',
@@ -24,14 +24,14 @@ setup(
                       "requests[socks]",
                       "xmltodict"],
     package_data={
-        "raccoon_src": [
+        "cherlock_src": [
             "wordlists/*"
         ]
     },
     include_package_data=True,
     entry_points={
         'console_scripts': [
-            'raccoon=raccoon_src.main:main'
+            'cherlock=cherlock_src.main:main'
         ]
     },
 )

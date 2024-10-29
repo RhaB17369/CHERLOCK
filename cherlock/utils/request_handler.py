@@ -3,8 +3,8 @@ from fake_useragent import UserAgent
 from requests import request, Session, utils as requests_utils
 from requests.exceptions import ProxyError, TooManyRedirects, ConnectionError, ConnectTimeout, ReadTimeout
 from urllib3.exceptions import NewConnectionError
-from raccoon_src.utils.exceptions import RequestHandlerException
-from raccoon_src.utils.singleton import Singleton
+from cherlock.utils.exceptions import RequestHandlerException
+from cherlock.utils.singleton import Singleton
 
 
 class RequestHandler(metaclass=Singleton):

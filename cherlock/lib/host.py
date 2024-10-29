@@ -1,11 +1,11 @@
 import os
 from ipaddress import ip_address
 from dns.exception import Timeout
-from raccoon_src.lib.dns_handler import DNSHandler
-from raccoon_src.utils.exceptions import HostHandlerException
-from raccoon_src.utils.help_utils import HelpUtilities
-from raccoon_src.utils.coloring import COLOR, COLORED_COMBOS
-from raccoon_src.utils.logger import Logger, SystemOutLogger
+from cherlock.lib.dns_handler import DNSHandler
+from cherlock.utils.exceptions import HostHandlerException
+from cherlock.utils.help_utils import HelpUtilities
+from cherlock.utils.coloring import COLOR, COLORED_COMBOS
+from cherlock.utils.logger import Logger, SystemOutLogger
 
 
 class Host:

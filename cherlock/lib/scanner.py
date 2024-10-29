@@ -1,15 +1,15 @@
 import re
 from subprocess import PIPE, Popen
-from raccoon_src.utils.help_utils import HelpUtilities
-from raccoon_src.utils.logger import Logger
-from raccoon_src.utils.coloring import COLOR, COLORED_COMBOS
+from cherlock.utils.help_utils import HelpUtilities
+from cherlock.utils.logger import Logger
+from cherlock.utils.coloring import COLOR, COLORED_COMBOS
 
 
 class NmapScan:
     """
     Nmap scan class
     Will run SYN/TCP scan according to privileges.
-    Start Raccoon with sudo for -sS else will run -sT
+    Start cherlock with sudo for -sS else will run -sT
     """
 
     def __init__(self, host, port_range, full_scan=None, scripts=None, services=None):

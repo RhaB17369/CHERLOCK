@@ -1,11 +1,11 @@
 import re
 from bs4 import BeautifulSoup
-from raccoon_src.utils.request_handler import RequestHandler
-from raccoon_src.lib.fuzzer import URLFuzzer
-from raccoon_src.utils.help_utils import HelpUtilities
-from raccoon_src.utils.exceptions import RaccoonException
-from raccoon_src.utils.logger import Logger
-from raccoon_src.utils.coloring import COLOR, COLORED_COMBOS
+from cherlock.utils.request_handler import RequestHandler
+from cherlock.lib.fuzzer import URLFuzzer
+from cherlock.utils.help_utils import HelpUtilities
+from cherlock.utils.exceptions import cherlockException
+from cherlock.utils.logger import Logger
+from cherlock.utils.coloring import COLOR, COLORED_COMBOS
 
 
 class SubDomainEnumerator:
@@ -78,7 +78,7 @@ class SubDomainEnumerator:
                 tds = row.select("td")
                 sub_domain = tds[0].text.split('\n')[0]  # Grab just the URL, truncate other information
                 self.logger.info("{} Found subdomain in DNS dumpster: {}".format(COLORED_COMBOS.GOOD, sub_domain))
-        except (RaccoonException, IndexError):
+        except (cherlockException, IndexError):
             self.logger.info("{} Failed to query DNS dumpster for subdomains".format(COLORED_COMBOS.BAD))
 
     async def bruteforce(self):

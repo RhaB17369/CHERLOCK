@@ -1,13 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 from requests.exceptions import ConnectionError, TooManyRedirects
-from raccoon_src.utils.web_server_validator import WebServerValidator
-from raccoon_src.lib.storage_explorer import StorageExplorer
-from raccoon_src.utils.request_handler import RequestHandler
-from raccoon_src.utils.help_utils import HelpUtilities
-from raccoon_src.utils.coloring import COLOR, COLORED_COMBOS
-from raccoon_src.utils.exceptions import WebAppScannerException, WebServerValidatorException
-from raccoon_src.utils.logger import Logger
+from cherlock.utils.web_server_validator import WebServerValidator
+from cherlock.lib.storage_explorer import StorageExplorer
+from cherlock.utils.request_handler import RequestHandler
+from cherlock.utils.help_utils import HelpUtilities
+from cherlock.utils.coloring import COLOR, COLORED_COMBOS
+from cherlock.utils.exceptions import WebAppScannerException, WebServerValidatorException
+from cherlock.utils.logger import Logger
 
 
 class WebApplicationScanner:

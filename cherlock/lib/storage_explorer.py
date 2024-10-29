@@ -1,8 +1,8 @@
 import os
 import xmltodict
-from raccoon_src.utils.request_handler import RequestHandler
-from raccoon_src.utils.exceptions import RaccoonException, RequestHandlerException
-from raccoon_src.utils.coloring import COLORED_COMBOS, COLOR
+from cherlock.utils.request_handler import RequestHandler
+from cherlock.utils.exceptions import cherlockException, RequestHandlerException
+from cherlock.utils.coloring import COLORED_COMBOS, COLOR
 
 
 # Set path for relative access to builtin files.

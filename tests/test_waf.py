@@ -1,5 +1,5 @@
 import unittest
-from raccoon_src.lib.waf import WAFApplicationMethods
+from cherlock.lib.waf import WAFApplicationMethods
 
 
 class Response:

@@ -2,9 +2,9 @@ import re
 from platform import system
 # noinspection PyProtectedMember
 from asyncio.subprocess import PIPE, create_subprocess_exec
-from raccoon_src.utils.help_utils import HelpUtilities
-from raccoon_src.utils.coloring import COLOR, COLORED_COMBOS
-from raccoon_src.utils.logger import Logger
+from cherlock.utils.help_utils import HelpUtilities
+from cherlock.utils.coloring import COLOR, COLORED_COMBOS
+from cherlock.utils.logger import Logger
 
 
 # macOS support

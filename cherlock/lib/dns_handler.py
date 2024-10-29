@@ -1,10 +1,10 @@
 from dns import resolver
 from asyncio.subprocess import PIPE, create_subprocess_exec
 from requests.exceptions import ConnectionError
-from raccoon_src.utils.help_utils import HelpUtilities
-from raccoon_src.utils.exceptions import RaccoonException
-from raccoon_src.utils.logger import Logger
-from raccoon_src.utils.coloring import COLOR, COLORED_COMBOS
+from cherlock.utils.help_utils import HelpUtilities
+from cherlock.utils.exceptions import cherlockException
+from cherlock.utils.logger import Logger
+from cherlock.utils.coloring import COLOR, COLORED_COMBOS
 
 
 # noinspection PyUnboundLocalVariable
@@ -70,7 +70,7 @@ class DNSHandler:
                     COLORED_COMBOS.GOOD, host.target)
                 )
             else:
-                raise RaccoonException
-        except RaccoonException:
+                raise cherlockException
+        except cherlockException:
             sout_logger.info("{} Failed to generate DNS mapping. A connection error occurred.".format(
                 COLORED_COMBOS.BAD))

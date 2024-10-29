@@ -4,37 +4,37 @@ import threading
 import click
 import os
 
-from raccoon_src.utils.coloring import COLOR, COLORED_COMBOS
-from raccoon_src.utils.exceptions import RaccoonException, HostHandlerException
-from raccoon_src.utils.request_handler import RequestHandler
-from raccoon_src.utils.logger import SystemOutLogger
-from raccoon_src.utils.help_utils import HelpUtilities
-from raccoon_src.lib.fuzzer import URLFuzzer
-from raccoon_src.lib.host import Host
-from raccoon_src.lib.scanner import Scanner, NmapScan, NmapVulnersScan, VulnersScanner
-from raccoon_src.lib.sub_domain import SubDomainEnumerator
-from raccoon_src.lib.dns_handler import DNSHandler
-from raccoon_src.lib.waf import WAF
-from raccoon_src.lib.tls import TLSHandler
-from raccoon_src.lib.web_app import WebApplicationScanner
+from cherlock.utils.coloring import COLOR, COLORED_COMBOS
+from cherlock.utils.exceptions import cherlockException, HostHandlerException
+from cherlock.utils.request_handler import RequestHandler
+from cherlock.utils.logger import SystemOutLogger
+from cherlock.utils.help_utils import HelpUtilities
+from cherlock.lib.fuzzer import URLFuzzer
+from cherlock.lib.host import Host
+from cherlock.lib.scanner import Scanner, NmapScan, NmapVulnersScan, VulnersScanner
+from cherlock.lib.sub_domain import SubDomainEnumerator
+from cherlock.lib.dns_handler import DNSHandler
+from cherlock.lib.waf import WAF
+from cherlock.lib.tls import TLSHandler
+from cherlock.lib.web_app import WebApplicationScanner
 
 # Set path for relative access to builtin files.
 MY_PATH = os.path.abspath(os.path.dirname(__file__))
 
 
 def intro(logger):
-    logger.info("""{}
- _____                _____    _____    ____     ____    _   _ 
-|  __ \      /\      / ____|  / ____|  / __ \   / __ \  | \ | |
-| |__) |    /  \    | |      | |      | |  | | | |  | | |  \| |
-|  _  /    / /\ \   | |      | |      | |  | | | |  | | | . ` |
-| | \ \   / ____ \  | |____  | |____  | |__| | | |__| | | |\  |
-|_|  \_\ /_/    \_\  \_____|  \_____|  \____/   \____/  |_| \_|
+    logger.info("""r{}
+  _________ ___ ________________________.____    ________  _________  ____  __.
+ /   _____//   |   \_   _____/\______   \    |   \_____  \ \_   ___ \|    |/ _|
+ \_____  \/    ~    \    __)_  |       _/    |    /   |   \/    \  \/|      <  
+ /        \    Y    /        \ |    |   \    |___/    |    \     \___|    |  \ 
+/_______  /\___|_  /_______  / |____|_  /_______ \_______  /\______  /____|__ \
+        \/       \/        \/         \/        \/       \/        \/        \/
 {}
 
 4841434b414c4c5448455448494e4753
 
-https://github.com/evyatarmeged/Raccoon
+https://github.com/RhaB17369/CHERLOCK
 -------------------------------------------------------------------
     """.format(COLOR.GRAY, COLOR.RESET))
 
@@ -70,7 +70,7 @@ https://github.com/evyatarmeged/Raccoon
                                                         "Runs instead of the regular Nmap scan and is longer.")
 @click.option("--vulners-path", default=os.path.join(MY_PATH, "utils/misc/vulners.nse"),
               help="Path to the custom nmap_vulners.nse script."
-                   "If not used, Raccoon uses the built-in script it ships with.")
+                   "If not used, cherlock uses the built-in script it ships with.")
 @click.option("-fr", "--follow-redirects", is_flag=True, default=False,
               help="Follow redirects when fuzzing. Default: False (will not follow redirects)")
 @click.option("--tls-port", default=443, help="Use this port for TLS queries. Default: 443")
@@ -82,7 +82,7 @@ https://github.com/evyatarmeged/Raccoon
 #               help="Min and Max number of seconds of delay to be waited between requests\n"
 #                    "Defaults to Min: 0.25, Max: 1. Specified in the format of Min-Max")
 @click.option("-q", "--quiet", is_flag=True, help="Do not output to stdout")
-@click.option("-o", "--outdir", default="raccoon_scan_results",
+@click.option("-o", "--outdir", default="cherlock_scan_results",
               help="Directory destination for scan output")
 def main(target,
          tor_routing,
@@ -119,7 +119,7 @@ def main(target,
         target = target.lower()
         try:
             HelpUtilities.validate_executables()
-        except RaccoonException as e:
+        except cherlockException as e:
             logger.critical(str(e))
             exit(9)
         HelpUtilities.validate_wordlist_args(proxy_list, wordlist, subdomain_list)
@@ -150,7 +150,7 @@ def main(target,
         if cookies:
             try:
                 cookies = HelpUtilities.parse_cookie_arg(cookies)
-            except RaccoonException as e:
+            except cherlockException as e:
                 logger.critical("{}{}{}".format(COLOR.RED, str(e), COLOR.RESET))
                 exit(2)
 
@@ -167,13 +167,13 @@ def main(target,
                 HelpUtilities.confirm_traffic_routs_through_tor()
                 logger.info("{} Validated Tor service is up. Routing traffic anonymously\n".format(
                     COLORED_COMBOS.NOTIFY))
-            except RaccoonException as err:
+            except cherlockException as err:
                 print("{}{}{}".format(COLOR.RED, str(err), COLOR.RESET))
                 exit(3)
 
         main_loop = asyncio.get_event_loop()
 
-        logger.info("{}### Raccoon Scan Started ###{}\n".format(COLOR.GRAY, COLOR.RESET))
+        logger.info("{}### cherlock Scan Started ###{}\n".format(COLOR.GRAY, COLOR.RESET))
         logger.info("{} Trying to gather information about host: {}".format(COLORED_COMBOS.INFO, target))
 
         # TODO: Populate array when multiple targets are supported
@@ -188,7 +188,7 @@ def main(target,
         if not skip_health_check:
             try:
                 HelpUtilities.validate_target_is_up(host)
-            except RaccoonException as err:
+            except cherlockException as err:
                 logger.critical("{}{}{}".format(COLOR.RED, str(err), COLOR.RESET))
                 exit(42)
 
@@ -252,7 +252,7 @@ def main(target,
                 while nmap_thread.is_alive():
                     time.sleep(15)
 
-        logger.info("\n{}### Raccoon scan finished ###{}\n".format(COLOR.GRAY, COLOR.RESET))
+        logger.info("\n{}### cherlock scan finished ###{}\n".format(COLOR.GRAY, COLOR.RESET))
         os.system("stty sane")
 
     except KeyboardInterrupt:

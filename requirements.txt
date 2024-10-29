@@ -1,8 +1,9 @@
-xmltodict==0.11.0
-dnspython==1.15.0
-requests>=2.20.0
-lxml==4.6.5
-beautifulsoup4==4.6.0
-click==6.7
+xmltodict
+dnspython
+requests
+lxml
+beautifulsoup4
+click
 fake-useragent
-PySocks==1.6.8
+PySocks
+setuptools
