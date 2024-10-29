@@ -89,8 +89,8 @@
 Clone the GitHub repository to benefit from recent features and updates:
 
 ```bash
-git clone https://github.com/RhaB17369/cherlock.git
-cd spynet
+git clone https://github.com/RhaB17369/CHERLOCK.git
+cd CHERLOCK
 python setup.py install
 ```
 ### To execute code changes in real time, use:
