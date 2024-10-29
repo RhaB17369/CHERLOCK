@@ -149,4 +149,5 @@ cherlock -d example.com --output-format json
 
 # About
 cherlock is designed for IT security professionals looking to obtain an accurate and in-depth security assessment of information systems. Thanks to its flexibility and extensive configuration options, Spynet integrates seamlessly into security workflows, providing a comprehensive and technical view of the target infrastructure.
-
+# Contributing
+Any and all contributions, issues, features and tips are welcome.
